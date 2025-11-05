@@ -14,4 +14,22 @@ def testing():
     conn = sqlite3.connect("test.db")
     conn.close()
     return "Database Connection Successful"
-    
+
+
+@app.route('/db_create')
+def creating():
+    # conn = psycopg2.connect("postgresql://adam_cavins_lab_10_db_user:yY9X9efnGytwU6GxsaOIG3tT3mtIOlhB@dpg-d45r2sripnbc738rpt80-a/adam_cavins_lab_10_db")
+    conn = sqlite3.connect("test.db")
+    cur = conn.cursor()
+    cur.execute('''
+    CREATE TABLE IF NOT EXISTS Basketball(
+    First varchar(255),
+    Last varchar(255),
+    City varchar(255),
+    Name varchar(255),
+    Number int
+    );
+    ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Created"
