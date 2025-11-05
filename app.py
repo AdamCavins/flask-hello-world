@@ -1,5 +1,6 @@
 from flask import Flask
 import psycopg2
+import sqlite3
 
 app = Flask(__name__)
 
@@ -9,6 +10,8 @@ def hello_world():
 
 @app.route('/db_test')
 def testing():
-    conn = psycopg2.connect("postgresql://adam_cavins_lab_10_db_user:yY9X9efnGytwU6GxsaOIG3tT3mtIOlhB@dpg-d45r2sripnbc738rpt80-a/adam_cavins_lab_10_db")
+    # conn = psycopg2.connect("postgresql://adam_cavins_lab_10_db_user:yY9X9efnGytwU6GxsaOIG3tT3mtIOlhB@dpg-d45r2sripnbc738rpt80-a/adam_cavins_lab_10_db")
+    conn = sqlite3.connect("test.db")
     conn.close()
     return "Database Connection Successful"
+    
